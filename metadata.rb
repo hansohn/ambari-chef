@@ -18,3 +18,7 @@ chef_version '>= 12.14' if respond_to?(:chef_version)
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/ambari-chef'
+#
+depends 'hostsfile'
+depends 'java-chef'
+depends 'ulimit'
