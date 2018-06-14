@@ -48,8 +48,8 @@ default['hw']['ambari']['server']['config']['ambari.properties']['authentication
 default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.useSSL'] = 'true'
 
 # ambari ldap allowed users
-default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_groups'] = [ 'prd_user_group' ]
-default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_users'] = [ 'prd_user' ]
+default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_groups'] = ['prd_user_group']
+default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_users'] = ['prd_user']
 ```
 
 ### PostgreSQL Database
@@ -87,7 +87,7 @@ To install Ambari Server, include the ambari_server recipe in your run list
 
 ```ruby
 # include ambari_server
-include "ambari-chef::ambari_server"
+include 'ambari-chef::ambari_server'
 ```
 
 ##### Ambari Agent
@@ -96,7 +96,7 @@ To install Ambari Server, include the ambari_agent recipe in your run list
 
 ```ruby
 # include ambari_agent
-include "ambari-chef::ambari_agent"
+include 'ambari-chef::ambari_agent'
 ```
 
 ##### Management Portal
