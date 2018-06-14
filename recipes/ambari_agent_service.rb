@@ -4,7 +4,6 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-
 # stop ambari agent if not running correctly
 bash 'fix_ambari-agent_service' do
   code <<-EOF

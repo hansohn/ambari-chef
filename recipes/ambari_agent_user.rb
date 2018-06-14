@@ -4,7 +4,6 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-
 # create hadoop group
 group 'create_hadoop_group' do
   group_name  node['hw']['hadoop']['common']['group']['name']
@@ -27,9 +26,9 @@ end
 
 # add ambari-agent sudoers file
 if node['hw']['ambari']['agent']['user']['name'] != 'root'
-  template "create_/etc/sudoers.d/ambari-agent" do
-    path "/etc/sudoers.d/ambari-agent"
-    source "ambari-agent.sudoers.erb"
+  template 'create_/etc/sudoers.d/ambari-agent' do
+    path '/etc/sudoers.d/ambari-agent'
+    source 'ambari-agent.sudoers.erb'
     sensitive true
     owner 'root'
     group 'root'

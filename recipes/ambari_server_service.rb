@@ -4,7 +4,6 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-
 # stop ambari server if not running correctly
 bash 'fix_ambari-server_service' do
   code <<-EOF

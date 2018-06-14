@@ -4,7 +4,6 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-
 # python3 upgrade pips
 bash 'python3_upgrade_pips' do
   code 'python3 -m pip install --upgrade pip setuptools wheel'

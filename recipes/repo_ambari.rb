@@ -4,7 +4,6 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-
 # reload internal Chef yum cache
 ruby_block 'yum_cache_reload' do
   block { Chef::Provider::Package::Yum::YumCache.instance.reload }

@@ -4,7 +4,6 @@
 #
 # Copyright:: 2018, The Authors, All Rights Reserved.
 
-
 # python2 upgrade pips
 bash 'python2_upgrade_pips' do
   code 'python2 -m pip install --upgrade pip setuptools wheel'

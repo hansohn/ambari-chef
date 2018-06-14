@@ -4,7 +4,6 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-
 # install ambari-server
 include_recipe "#{cookbook_name}::repo_ambari"
 include_recipe "#{cookbook_name}::ambari_server_install"

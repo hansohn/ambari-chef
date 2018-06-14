@@ -1,11 +1,10 @@
 # pyhton
-default['python']['python2']['packages'] = [ 'python' ]
+default['python']['python2']['packages'] = ['python']
 default['python']['python2']['pips'] = []
 
 # java
 default['java']['install_from'] = 'oracle_source'
 default['java']['install_version'] = 'jdk-8u172-linux-x64'
-
 
 # hortonworks ambari repo
 default['hw']['ambari']['version'] = '2.4.3'
@@ -20,7 +19,6 @@ when '2.6.2'
   default['hw']['ambari']['version_full'] = '2.6.2.0-155'
   default['hw']['ambari']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.6.2.0/ambari.repo"
 end
-
 
 # config
 default['hw']['ambari']['server']['setup']['db']['databasehost'] = 'localhost'
@@ -84,18 +82,18 @@ default['hw']['ambari']['agent']['user']['name'] = 'ambari-agent'
 default['hw']['ambari']['agent']['user']['home'] = '/var/lib/ambari-agent'
 default['hw']['ambari']['agent']['user']['shell'] = '/bin/bash'
 default['hw']['ambari']['agent']['user']['uid'] = '15011'
-default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_datadir'] = "/opt/ambari_infra_solr/data"
-default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_keystore_location'] = "/etc/security/serverKeys/infra.solr.keyStore.jks"
-default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_keystore_type'] = "jks"
-default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_keystore_password'] = "changeit"
-default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_port'] = "8886"
-default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_ssl_enabled'] = "false"
-default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_truststore_location'] = "/etc/security/serverKeys/infra.solr.trustStore.jks"
-default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_truststore_type'] = "jks"
-default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_truststore_password'] = "changeit"
-default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_user'] = "infra-solr"
-default['hw']['ambari']['infra']['crypto']['keystore_jks'] = "/var/lib/ambari-infra-solr/keys/infra.solr.keyStore.jks"
-default['hw']['ambari']['infra']['crypto']['truststore_jks'] = "/var/lib/ambari-infra-solr/keys/infra.solr.trustStore.jks"
+default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_datadir'] = '/opt/ambari_infra_solr/data'
+default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_keystore_location'] = '/etc/security/serverKeys/infra.solr.keyStore.jks'
+default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_keystore_type'] = 'jks'
+default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_keystore_password'] = 'changeit'
+default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_port'] = '8886'
+default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_ssl_enabled'] = 'false'
+default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_truststore_location'] = '/etc/security/serverKeys/infra.solr.trustStore.jks'
+default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_truststore_type'] = 'jks'
+default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_truststore_password'] = 'changeit'
+default['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_user'] = 'infra-solr'
+default['hw']['ambari']['infra']['crypto']['keystore_jks'] = '/var/lib/ambari-infra-solr/keys/infra.solr.keyStore.jks'
+default['hw']['ambari']['infra']['crypto']['truststore_jks'] = '/var/lib/ambari-infra-solr/keys/infra.solr.trustStore.jks'
 default['hw']['ambari']['infra']['user']['name'] = 'infra-solr'
 default['hw']['ambari']['infra']['user']['home'] = '/home/infra-solr'
 default['hw']['ambari']['infra']['user']['shell'] = '/bin/bash'
@@ -110,8 +108,8 @@ default['hw']['ambari']['metrics']['config']['ams-grafana-ini']['protocol'] = 'h
 default['hw']['ambari']['metrics']['config']['ams-hbase-site']['hbase.rootdir'] = 'file:///var/lib/ambari-metrics-collector/hbase'
 default['hw']['ambari']['metrics']['config']['ams-hbase-site']['hbase.tmp.dir'] = '/var/lib/ambari-metrics-collector/hbase-tmp'
 default['hw']['ambari']['metrics']['config']['ams-site']['timeline.metrics.aggregator.checkpoint.dir'] = '/var/lib/ambari-metrics-collector/checkpoint'
-default['hw']['ambari']['metrics']['crypto']['cert'] = "/etc/ambari-metrics-grafana/conf/ams-grafana.crt"
-default['hw']['ambari']['metrics']['crypto']['key'] = "/etc/ambari-metrics-grafana/conf/ams-grafana.key"
+default['hw']['ambari']['metrics']['crypto']['cert'] = '/etc/ambari-metrics-grafana/conf/ams-grafana.crt'
+default['hw']['ambari']['metrics']['crypto']['key'] = '/etc/ambari-metrics-grafana/conf/ams-grafana.key'
 default['hw']['ambari']['metrics']['user']['name'] = 'ams'
 default['hw']['ambari']['metrics']['user']['home'] = '/home/ams'
 default['hw']['ambari']['metrics']['user']['shell'] = '/bin/bash'
@@ -134,13 +132,12 @@ default['hw']['logsearch']['config']['logsearch-env']['logsearch_truststore_type
 default['hw']['logsearch']['config']['logsearch-env']['logsearch_truststore_password'] = 'changeit'
 default['hw']['logsearch']['config']['logsearch-env']['logsearch_ui_port'] = '61888'
 default['hw']['logsearch']['config']['logsearch-env']['logsearch_ui_protocol'] = 'http'
-default['hw']['logsearch']['crypto']['keystore_jks'] = "/var/lib/logsearch/keys/logsearch.keyStore.jks"
-default['hw']['logsearch']['crypto']['truststore_jks'] = "/var/lib/logsearch/keys/logsearch.trustStore.jks"
+default['hw']['logsearch']['crypto']['keystore_jks'] = '/var/lib/logsearch/keys/logsearch.keyStore.jks'
+default['hw']['logsearch']['crypto']['truststore_jks'] = '/var/lib/logsearch/keys/logsearch.trustStore.jks'
 default['hw']['logsearch']['user']['name'] = 'logsearch'
 default['hw']['logsearch']['user']['home'] = '/home/logsearch'
 default['hw']['logsearch']['user']['shell'] = '/bin/bash'
 default['hw']['logsearch']['user']['uid'] = '15021'
-
 
 case node.chef_environment
 when 'production'
@@ -148,20 +145,20 @@ when 'production'
   default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.baseDn'] = 'dc=prd,dc=domain,dc=local'
   default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.managerDn'] = 'uid=manager,cn=users,cn=accounts,dc=prd,dc=domain,dc=local'
   default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.primaryUrl'] = 'ldap-server-01.prd.domain.local:636'
-  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_groups'] = [ 'prd_user_group' ]
-  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_users'] = [ 'prd_user' ]
+  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_groups'] = ['prd_user_group']
+  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_users'] = ['prd_user']
 when 'staging'
   default['hw']['ambari']['server']['config']['ambari.properties']['host_cname'] = 'ambari.stg.domain.local'
   default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.baseDn'] = 'dc=stg,dc=domain,dc=local'
   default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.managerDn'] = 'uid=manager,cn=users,cn=accounts,dc=stg,dc=domain,dc=local'
   default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.primaryUrl'] = 'ldap-server-01.stg.domain.local:636'
-  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_groups'] = [ 'stg_user_group' ]
-  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_users'] = [ 'stg_user' ]
+  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_groups'] = ['stg_user_group']
+  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_users'] = ['stg_user']
 else
   default['hw']['ambari']['server']['config']['ambari.properties']['host_cname'] = 'ambari.dev.domain.local'
   default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.baseDn'] = 'dc=dev,dc=domain,dc=local'
   default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.managerDn'] = 'uid=manager,cn=users,cn=accounts,dc=dev,dc=domain,dc=local'
   default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.primaryUrl'] = 'ldap-server-01.dev.domain.local:636'
-  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_groups'] = [ 'dev_user_group' ]
-  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_users'] = [ 'dev_user' ]
+  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_groups'] = ['dev_user_group']
+  default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_users'] = ['dev_user']
 end
