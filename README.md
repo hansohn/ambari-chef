@@ -8,11 +8,11 @@ Ambari requires [Java](http://www.oracle.com/technetwork/java/javase/downloads/i
 
 ```ruby
 # python 2
-node['python']['python2']['packages'] = [ 'python' ]
+default['python']['python2']['packages'] = [ 'python' ]
 
 # java 8
-node['java']['install_from'] = 'oracle_source'
-node['java']['install_version'] = 'jdk-8u172-linux-x64'
+default['java']['install_from'] = 'oracle_source'
+default['java']['install_version'] = 'jdk-8u172-linux-x64'
 ```
 
 ### Configuration
@@ -21,9 +21,9 @@ By default this cookbook installs Ambari version ```2.6.2```, which at the time 
 
 ```ruby
 # ambari
-node['hw']['ambari']['version'] = '2.6.2'
-node['hw']['ambari']['server']['config']['ambari.properties']['api.ssl'] = 'false'
-node['hw']['ambari']['server']['config']['ambari.properties']['client.api.port'] = '8080'
+default['hw']['ambari']['version'] = '2.6.2'
+default['hw']['ambari']['server']['config']['ambari.properties']['api.ssl'] = 'false'
+default['hw']['ambari']['server']['config']['ambari.properties']['client.api.port'] = '8080'
 ```
 
 ### LDAP Authentication
@@ -32,17 +32,24 @@ To enable LDAP Authentication, define the following keys in your attributes file
 
 ```ruby
 # ambari ldap integration
-node['hw']['ambari']['server']['config']['ambari.properties']['ambari.ldap.isConfigured'] = 'false'
-node['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.bindAnonymously'] = 'false'
-node['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.dnAttribute'] = 'dn'
-node['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.groupMembershipAttr'] = 'memberUid'
-node['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.groupNamingAttr'] = 'cn'
-node['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.groupObjectClass'] = 'posixgroup'
-node['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.managerPassword'] = '/etc/ambari-server/conf/ldap-password.dat'
-node['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.referral'] = 'follow'
-node['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.usernameAttribute'] = 'uid'
-node['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.userObjectClass'] = 'person'
-node['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.useSSL'] = 'true'
+default['hw']['ambari']['server']['config']['ambari.properties']['ambari.ldap.isConfigured'] = 'false'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.baseDn'] = 'dc=prd,dc=domain,dc=local'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.managerDn'] = 'uid=manager,cn=users,cn=accounts,dc=prd,dc=domain,dc=local'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.primaryUrl'] = 'ldap-server-01.prd.domain.local:636'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.bindAnonymously'] = 'false'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.dnAttribute'] = 'dn'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.groupMembershipAttr'] = 'memberUid'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.groupNamingAttr'] = 'cn'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.groupObjectClass'] = 'posixgroup'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.managerPassword'] = '/etc/ambari-server/conf/ldap-password.dat'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.referral'] = 'follow'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.usernameAttribute'] = 'uid'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.userObjectClass'] = 'person'
+default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.useSSL'] = 'true'
+
+# ambari ldap allowed users
+default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_groups'] = [ 'prd_user_group' ]
+default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_users'] = [ 'prd_user' ]
 ```
 
 ### PostgreSQL Database
@@ -51,25 +58,25 @@ Ambari installs and utilizes PostgreSQL by default. The `postgresql-server` pack
 
 ```ruby
 # ambari server db setup values
-node['hw']['ambari']['server']['setup']['db']['databasehost'] = 'localhost'
-node['hw']['ambari']['server']['setup']['db']['databaseport'] = '5432'
-node['hw']['ambari']['server']['setup']['db']['databasepassword'] = 'bigdata'
+default['hw']['ambari']['server']['setup']['db']['databasehost'] = 'localhost'
+default['hw']['ambari']['server']['setup']['db']['databaseport'] = '5432'
+default['hw']['ambari']['server']['setup']['db']['databasepassword'] = 'bigdata'
 
 # ambari server config values
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.connection-pool'] = 'internal'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.database_name'] = 'ambari'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.database'] = 'postgres'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.driver'] = 'org.postgresql.Driver'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.hostname'] = 'localhost'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.port'] = 5432
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.postgres.schema'] = 'ambari'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.driver'] = 'org.postgresql.Driver'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.url'] = 'jdbc:postgresql://localhost:5432/ambari'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.user.name'] = 'ambari'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.user.passwd'] = '/etc/ambari-server/conf/password.dat'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.url'] = 'jdbc:postgresql://localhost:5432/ambari'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.user.name'] = 'ambari'
-node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.user.passwd'] = '/etc/ambari-server/conf/password.dat'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.connection-pool'] = 'internal'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.database_name'] = 'ambari'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.database'] = 'postgres'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.driver'] = 'org.postgresql.Driver'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.hostname'] = 'localhost'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.port'] = 5432
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.postgres.schema'] = 'ambari'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.driver'] = 'org.postgresql.Driver'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.url'] = 'jdbc:postgresql://localhost:5432/ambari'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.user.name'] = 'ambari'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.user.passwd'] = '/etc/ambari-server/conf/password.dat'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.url'] = 'jdbc:postgresql://localhost:5432/ambari'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.user.name'] = 'ambari'
+default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.user.passwd'] = '/etc/ambari-server/conf/password.dat'
 ```
 
 ### Usage
