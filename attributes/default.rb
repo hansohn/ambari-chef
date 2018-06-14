@@ -7,7 +7,7 @@ default['java']['install_from'] = 'oracle_source'
 default['java']['install_version'] = 'jdk-8u172-linux-x64'
 
 # hortonworks ambari repo
-default['hw']['ambari']['version'] = '2.4.3'
+default['hw']['ambari']['version'] = '2.6.2'
 case node['hw']['ambari']['version']
 when '2.4.3'
   default['hw']['ambari']['version_full'] = '2.4.3.0-30'
