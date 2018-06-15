@@ -14,3 +14,8 @@ include_recipe "#{cookbook_name}::ambari_agent_install"
 include_recipe "#{cookbook_name}::ambari_agent_user"
 include_recipe "#{cookbook_name}::ambari_agent_config"
 include_recipe "#{cookbook_name}::ambari_agent_service"
+
+# configure ambari applications
+include_recipe "#{cookbook_name}::ambari_infra"
+include_recipe "#{cookbook_name}::logsearch"
+include_recipe "#{cookbook_name}::ambari_metrics"
