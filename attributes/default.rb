@@ -1,12 +1,18 @@
-# pyhton
+# -- PYTHON --
 default['python']['python2']['packages'] = ['python']
 default['python']['python2']['pips'] = []
 
-# java
+# -- JAVA --
 default['java']['install_from'] = 'oracle_source'
 default['java']['install_version'] = 'jdk-8u172-linux-x64'
 
-# hortonworks ambari repo
+# -- HW CLUSTER --
+default['hw']['cluster']['name'] = 'hdp_demo'
+default['hw']['cluster']['blueprint_name'] = 'hdp_demo_2.6.5_blueprint'
+default['hw']['cluster']['blueprint_file'] = 'hdp_demo_2.6.5_blueprint.json'
+default['hw']['cluster']['hostmapping_file'] = 'hdp_demo_2.6.5_hostmapping.json'
+
+# -- AMBARI REPO --
 default['hw']['ambari']['version'] = '2.6.2'
 case node['hw']['ambari']['version']
 when '2.4.3'
@@ -20,7 +26,7 @@ when '2.6.2'
   default['hw']['ambari']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.6.2.0/ambari.repo"
 end
 
-# config
+# -- AMBARI CONFIG --
 default['hw']['ambari']['server']['setup']['db']['databasehost'] = 'localhost'
 default['hw']['ambari']['server']['setup']['db']['databaseport'] = '5432'
 default['hw']['ambari']['server']['setup']['db']['databasepassword'] = 'bigdata'
