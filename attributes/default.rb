@@ -7,10 +7,10 @@ default['java']['install_from'] = 'oracle_source'
 default['java']['install_version'] = 'jdk-8u172-linux-x64'
 
 # -- HW CLUSTER --
-default['hw']['cluster']['name'] = 'hdp_demo'
-default['hw']['cluster']['blueprint_name'] = 'hdp_demo_2.6.5_blueprint'
-default['hw']['cluster']['blueprint_file'] = 'hdp_demo_2.6.5_blueprint.json'
-default['hw']['cluster']['hostmapping_file'] = 'hdp_demo_2.6.5_hostmapping.json'
+default['hw']['cluster']['name'] = 'demo'
+default['hw']['cluster']['blueprint_name'] = 'demo_blueprint'
+default['hw']['cluster']['blueprint_file'] = 'demo_blueprint.json'
+default['hw']['cluster']['hostmapping_file'] = 'demo_hostmapping.json'
 
 # -- AMBARI REPO --
 default['hw']['ambari']['version'] = '2.6.2'
