@@ -5,3 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased](unreleased)
 
 - no new features in development at this time
+
+## [0.1.0](https://github.com/hansohn/ambari-chef/compare/0.1.0...0.1.0) (Jun 19, 2018)
+
+FEATURES:
+
+- split out of [hdp-chef](https://github.com/hansohn/hdp-chef)
