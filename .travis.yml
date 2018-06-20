@@ -11,9 +11,9 @@ addons:
 # Don't `bundle install` which takes about 1.5 mins
 install: echo "skip bundle install"
 
-branches:
-  only:
-    - master
+#branches:
+#  only:
+#    - master
 
 services: docker
 
@@ -22,7 +22,7 @@ env:
   - KITCHEN_YAML=.kitchen.yml
   - KITCHEN_LOCAL_YAML=.kitchen.dokken.yml
   matrix:
-  - INSTANCE=default-centos-7
+  - INSTANCE=centos-7
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
