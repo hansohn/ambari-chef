@@ -1,5 +1,7 @@
 # ambari-chef
 
+[![Build Status](https://travis-ci.org/hansohn/ambari-chef.svg?branch=master)](https://travis-ci.org/hansohn/ambari-chef)
+
 This cookbook installs [Apache Ambari](https://ambari.apache.org/), a project aimed at making Hadoop management simpler by developing software for provisioning, managing, and monitoring Apache Hadoop clusters. Ambari provides an intuitive, easy-to-use Hadoop management web UI backed by its RESTful APIs.
 
 ### Prerequsites
