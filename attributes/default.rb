@@ -12,6 +12,7 @@ default['hw']['cluster']['name'] = 'demo'
 default['hw']['cluster']['blueprint_name'] = 'demo_blueprint'
 default['hw']['cluster']['blueprint_file'] = 'demo_blueprint.json'
 default['hw']['cluster']['hostmapping_file'] = 'demo_hostmapping.json'
+default['hw']['cluster']['version_definition_file'] = 'demo_vdf.json'
 
 # -- AMBARI REPO --
 default['hw']['ambari']['version'] = '2.7.0'

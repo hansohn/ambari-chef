@@ -45,9 +45,9 @@ bash 'upload_hw_vdf' do
   code "curl -k -X POST \
              -H 'X-Requested-By: ambari' \
              -u admin:admin http://#{ambari_server}:#{node['hw']['ambari']['server']['config']['ambari.properties']['client.api.port']}/api/v1/version_definitions \
-             -d @HDP-#{node['hw']['hdp']['version_full']}.xml"
+             -d @#{node['hw']['cluster']['version_definition_file']}"
   cwd '/var/lib/ambari-clusters'
-  only_if { File.exist?("/var/lib/ambari-clusters/HDP-#{node['hw']['hdp']['version_full']}.xml") }
+  only_if { File.exist?("/var/lib/ambari-clusters/#{node['hw']['cluster']['version_definition_file']}") }
 end
 
 # hw-cluster: upload blueprint to ambari
