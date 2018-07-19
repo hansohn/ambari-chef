@@ -1,10 +1,11 @@
 # -- PYTHON --
+default['python']['python2']['install'] = true
 default['python']['python2']['packages'] = ['python']
 default['python']['python2']['pips'] = []
 
 # -- JAVA --
 default['java']['install_from'] = 'oracle_source'
-default['java']['install_version'] = 'jdk-8u172-linux-x64'
+default['java']['install_version'] = 'jdk-8u181-linux-x64'
 
 # -- HW CLUSTER --
 default['hw']['cluster']['name'] = 'demo'
@@ -13,7 +14,7 @@ default['hw']['cluster']['blueprint_file'] = 'demo_blueprint.json'
 default['hw']['cluster']['hostmapping_file'] = 'demo_hostmapping.json'
 
 # -- AMBARI REPO --
-default['hw']['ambari']['version'] = '2.6.2'
+default['hw']['ambari']['version'] = '2.7.0'
 case node['hw']['ambari']['version']
 when '2.4.3'
   default['hw']['ambari']['version_full'] = '2.4.3.0-30'
@@ -24,6 +25,9 @@ when '2.5.2'
 when '2.6.2'
   default['hw']['ambari']['version_full'] = '2.6.2.0-155'
   default['hw']['ambari']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.6.2.0/ambari.repo"
+when '2.7.0'
+  default['hw']['ambari']['version_full'] = '2.7.0.0-897'
+  default['hw']['ambari']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.7.0.0/ambari.repo"
 end
 
 # -- AMBARI CONFIG --
