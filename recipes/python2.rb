@@ -11,10 +11,12 @@ bash 'python2_upgrade_pips' do
 end
 
 # python2 install packages
-package 'python2_install' do
-  package_name node['python']['python2']['packages']
-  action :install
-  notifies :run, 'bash[python2_upgrade_pips]', :immediately
+if node['python']['python2']['install']
+  package 'python2_install' do
+    package_name node['python']['python2']['packages']
+    action :install
+    notifies :run, 'bash[python2_upgrade_pips]', :immediately
+  end
 end
 
 # python2 install pips

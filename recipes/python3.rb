@@ -11,10 +11,12 @@ bash 'python3_upgrade_pips' do
 end
 
 # python3 install packages
-package 'python3_install' do
-  package_name node['python']['python3']['packages']
-  action :install
-  notifies :run, 'bash[python3_upgrade_pips]', :immediately
+if node['python']['python3']['install']
+  package 'python3_install' do
+    package_name node['python']['python3']['packages']
+    action :install
+    notifies :run, 'bash[python3_upgrade_pips]', :immediately
+  end
 end
 
 # python3 install pips
