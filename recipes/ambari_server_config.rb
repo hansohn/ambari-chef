@@ -96,6 +96,17 @@ if node['hw']['ambari']['server']['config']['ambari.properties']['ambari.ldap.is
   end
 end
 
+# if using custom db
+if defined?(node['hw']['ambari']['server']['setup']['db']['databasepassword'])
+  file 'create_/etc/ambari-server/conf/password.dat' do
+    path '/etc/ambari-server/conf/password.dat'
+    content node['hw']['ambari']['server']['setup']['db']['databasepassword'].to_s
+    owner node['hw']['ambari']['server']['user']['name']
+    group 'root'
+    mode '0600'
+  end
+end
+
 # update ambari with new config
 template 'create_/etc/ambari-server/conf/ambari.properties' do
   path '/etc/ambari-server/conf/ambari.properties'
