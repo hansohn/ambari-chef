@@ -1,6 +1,6 @@
 # ambari-chef
 
-[![Build Status](https://travis-ci.org/hansohn/ambari-chef.svg?branch=master)](https://travis-ci.org/hansohn/ambari-chef) [![Chef cookbook](https://img.shields.io/github/tag/hansohn/ambari-chef.svg)](https://github.com/hansohn/ambari-chef)
+[![Build Status](https://travis-ci.org/hansohn/ambari-chef.svg?branch=master)](https://travis-ci.org/hansohn/ambari-chef) [![GitHub tag](https://img.shields.io/github/tag/hansohn/ambari-chef.svg)](https://github.com/hansohn/ambari-chef)
 
 This cookbook installs [Apache Ambari](https://ambari.apache.org/), a project aimed at making Hadoop management simpler by developing software for provisioning, managing, and monitoring Apache Hadoop clusters. Ambari provides an intuitive, easy-to-use Hadoop management web UI backed by its RESTful APIs.
 
@@ -10,20 +10,20 @@ Ambari requires [Java](http://www.oracle.com/technetwork/java/javase/downloads/i
 
 ```ruby
 # python 2
-default['python']['python2']['packages'] = [ 'python' ]
+default['python']['python2']['packages'] = ['python' ]
 
 # java 8
 default['java']['install_from'] = 'oracle_source'
-default['java']['install_version'] = 'jdk-8u172-linux-x64'
+default['java']['install_version'] = 'jdk-8u181-linux-x64'
 ```
 
 ### Configuration
 
-By default this cookbook installs Ambari version ```2.6.2```, which at the time of this writing, is the current version. A different version of Ambari can be specified for installation by overriding the version attribute.
+By default this cookbook installs Ambari version ```2.7.0```, which at the time of this writing, is the current version. A different version of Ambari can be specified for installation by overriding the version attribute.
 
 ```ruby
 # ambari
-default['hw']['ambari']['version'] = '2.6.2'
+default['hw']['ambari']['version'] = '2.7.0'
 default['hw']['ambari']['server']['config']['ambari.properties']['api.ssl'] = 'false'
 default['hw']['ambari']['server']['config']['ambari.properties']['client.api.port'] = '8080'
 ```

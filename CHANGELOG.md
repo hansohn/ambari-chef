@@ -6,6 +6,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - no new features in development at this time
 
+## [0.2.0](https://github.com/hansohn/ambari-chef/compare/0.1.0...0.2.0) (Jul 18, 2018)
+
+FEATURES:
+
+- bump ambari version to 2.7.0
+- bump java version to 1.8.0_181
+- add boolean to python recipes to toggle install
+
+BUG FIXES:
+
+- create password.dat file if defining db password
+
 ## [0.1.0](https://github.com/hansohn/ambari-chef/compare/0.1.0...0.1.0) (Jun 19, 2018)
 
 FEATURES:
