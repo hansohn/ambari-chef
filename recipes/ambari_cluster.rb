@@ -2,7 +2,27 @@
 # Cookbook Name:: ambari-chef
 # Recipe:: hw_cluster
 #
-# Copyright (c) 2017 The Authors, All Rights Reserved.
+# The MIT License (MIT)
+#
+# Copyright:: 2018, Ryan Hansohn
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 # hw-cluster: create clusters directory
 directory 'make_/var/lib/ambari-clusters' do
@@ -19,6 +39,16 @@ ambari_server = if Chef::Config[:local_mode]
                 else
                   search(:node, 'role:"ambari_server"')
                 end
+
+# hw-cluster: upload version definition file to ambari
+bash 'upload_hw_vdf' do
+  code "curl -k -X POST \
+             -H 'X-Requested-By: ambari' \
+             -u admin:admin http://#{ambari_server}:#{node['hw']['ambari']['server']['config']['ambari.properties']['client.api.port']}/api/v1/version_definitions \
+             -d @HDP-#{node['hw']['hdp']['version_full']}.xml"
+  cwd '/var/lib/ambari-clusters'
+  only_if { File.exist?("/var/lib/ambari-clusters/HDP-#{node['hw']['hdp']['version_full']}.xml") }
+end
 
 # hw-cluster: upload blueprint to ambari
 bash 'upload_hw_blueprint' do

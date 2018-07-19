@@ -6,6 +6,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - no new features in development at this time
 
+## [0.3.0](https://github.com/hansohn/ambari-chef/compare/0.2.0...0.3.0) (Jul 19, 2018)
+
+FEATURES:
+
+- update licenses
+- add vdf file upload functionality to ambari_cluster recipe
+
 ## [0.2.0](https://github.com/hansohn/ambari-chef/compare/0.1.0...0.2.0) (Jul 18, 2018)
 
 FEATURES:
