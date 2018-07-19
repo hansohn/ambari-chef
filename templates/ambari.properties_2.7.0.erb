@@ -34,7 +34,7 @@ client.threadpool.size.max=25
 common.services.path=/var/lib/ambari-server/resources/common-services
 custom.action.definitions=/var/lib/ambari-server/resources/custom_action_definitions
 extensions.path=/var/lib/ambari-server/resources/extensions
-gpl.license.accepted=false
+gpl.license.accepted=<%= node['hw']['ambari']['server']['config']['ambari.properties']['gpl.license.accepted'] %>
 http.cache-control=no-store
 http.charset=utf-8
 http.pragma=no-cache

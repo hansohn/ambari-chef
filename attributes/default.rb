@@ -51,6 +51,7 @@ default['hw']['ambari']['server']['config']['ambari.properties']['client.api.por
 default['hw']['ambari']['server']['config']['ambari.properties']['client.api.ssl.cert_name'] = 'https.crt'
 default['hw']['ambari']['server']['config']['ambari.properties']['client.api.ssl.key_name'] = 'https.key'
 default['hw']['ambari']['server']['config']['ambari.properties']['client.api.ssl.port'] = '8443'
+default['hw']['ambari']['server']['config']['ambari.properties']['gpl.license.accepted'] = 'true'
 default['hw']['ambari']['server']['config']['ambari.properties']['security.server.two_way_ssl'] = 'false'
 default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.connection-pool'] = 'internal'
 default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.database_name'] = 'ambari'

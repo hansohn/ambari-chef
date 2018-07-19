@@ -13,6 +13,7 @@ FEATURES:
 - bump ambari version to 2.7.0
 - bump java version to 1.8.0_181
 - add boolean to python recipes to toggle install
+- add gpl.license.accepted attribute
 
 BUG FIXES:
 
