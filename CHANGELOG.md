@@ -6,6 +6,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - no new features in development at this time
 
+## [0.3.1](https://github.com/hansohn/ambari-chef/compare/0.3.0...0.3.1) (Jul 19, 2018)
+
+BUG FIXES:
+
+- grant missing ambari-agent sudo commands
+
 ## [0.3.0](https://github.com/hansohn/ambari-chef/compare/0.2.0...0.3.0) (Jul 19, 2018)
 
 FEATURES:
