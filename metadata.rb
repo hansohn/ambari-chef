@@ -4,7 +4,7 @@ maintainer_email 'info@imnorobot.com'
 license 'MIT'
 description 'Installs/Configures ambari-chef'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.3.1'
+version '0.3.2'
 chef_version '>= 12.14' if respond_to?(:chef_version)
 
 supports 'centos', '>= 7.0'

@@ -40,3 +40,6 @@ suites:
       inspec_tests:
         - test/integration/default
     attributes:
+      hw:
+        ambari:
+          version: '2.7.0'

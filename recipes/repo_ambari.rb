@@ -30,9 +30,11 @@ ruby_block 'yum_cache_reload' do
   action :nothing
 end
 
+ambari_repo = -> { node['hw']['ambari'][node['hw']['ambari']['version']]['repo'] }
+
 # add ambari yum repo
 remote_file 'ambari_yum_repo' do
-  source node['hw']['ambari']['repo']
+  source ambari_repo.call
   path "/etc/yum.repos.d/ambari_#{node['hw']['ambari']['version']}.repo"
   owner 'root'
   group 'root'

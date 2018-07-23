@@ -101,10 +101,12 @@ bash 'config_ambari_server' do
   action 'nothing'
 end
 
+ambari_server_version = -> { node['hw']['ambari'][node['hw']['ambari']['version']]['version_full'] }
+
 # install ambari-server
 package 'ambari-server' do
   package_name 'ambari-server'
-  version node['hw']['ambari']['version_full']
+  version ambari_server_version.call
   action :install
   notifies :create, 'template[create_/tmp/postgres_create_ambari_db.sql]', :immediately
   notifies :run, 'bash[create_ambari_postgres_db]', :immediately

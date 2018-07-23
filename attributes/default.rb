@@ -15,21 +15,19 @@ default['hw']['cluster']['hostmapping_file'] = 'demo_hostmapping.json'
 default['hw']['cluster']['version_definition_file'] = 'demo_vdf.json'
 
 # -- AMBARI REPO --
-default['hw']['ambari']['version'] = '2.7.0'
-case node['hw']['ambari']['version']
-when '2.4.3'
-  default['hw']['ambari']['version_full'] = '2.4.3.0-30'
-  default['hw']['ambari']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.4.3.0/ambari.repo"
-when '2.5.2'
-  default['hw']['ambari']['version_full'] = '2.5.2.0-298'
-  default['hw']['ambari']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.5.2.0/ambari.repo"
-when '2.6.2'
-  default['hw']['ambari']['version_full'] = '2.6.2.0-155'
-  default['hw']['ambari']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.6.2.0/ambari.repo"
-when '2.7.0'
-  default['hw']['ambari']['version_full'] = '2.7.0.0-897'
-  default['hw']['ambari']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.7.0.0/ambari.repo"
-end
+default['hw']['ambari']['version'] = '2.6.2'
+# 2.4.3
+default['hw']['ambari']['2.4.3']['version_full'] = '2.4.3.0-30'
+default['hw']['ambari']['2.4.3']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.4.3.0/ambari.repo"
+# 2.5.0
+default['hw']['ambari']['2.5.0']['version_full'] = '2.5.2.0-298'
+default['hw']['ambari']['2.5.0']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.5.2.0/ambari.repo"
+# 2.6.2
+default['hw']['ambari']['2.6.2']['version_full'] = '2.6.2.2-1'
+default['hw']['ambari']['2.6.2']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.6.2.2/ambari.repo"
+# 2.7.0
+default['hw']['ambari']['2.7.0']['version_full'] = '2.7.0.0-897'
+default['hw']['ambari']['2.7.0']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.7.0.0/ambari.repo"
 
 # -- AMBARI CONFIG --
 default['hw']['ambari']['server']['setup']['db']['databasehost'] = 'localhost'
