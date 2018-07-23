@@ -15,7 +15,7 @@ default['hw']['cluster']['hostmapping_file'] = 'demo_hostmapping.json'
 default['hw']['cluster']['version_definition_file'] = 'demo_vdf.json'
 
 # -- AMBARI REPO --
-default['hw']['ambari']['version'] = '2.6.2'
+default['hw']['ambari']['version'] = '2.7.0'
 # 2.4.3
 default['hw']['ambari']['2.4.3']['version_full'] = '2.4.3.0-30'
 default['hw']['ambari']['2.4.3']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.4.3.0/ambari.repo"
