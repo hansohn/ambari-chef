@@ -30,7 +30,7 @@
 
 # /etc/init.d/ambari-server
 set -u # fail on unset variables
-VERSION="2.6.2.0-155"
+VERSION="<%= @version_full %>"
 HASH="14eb86d129c944ffcfa273efdf93ffccc7beae24"
 
 case "${1:-}" in
