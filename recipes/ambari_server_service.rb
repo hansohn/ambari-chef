@@ -41,10 +41,15 @@ bash 'systemctl_daemon_reload' do
   action :nothing
 end
 
+ambari_server_version_full = -> { node['hw']['ambari'][node['hw']['ambari']['version']]['version_full'] }
+
 # create ambari-server service
 template 'create_/etc/rc.d/init.d/ambari-server' do
   path '/etc/rc.d/init.d/ambari-server'
   source "ambari-server.service_#{node['hw']['ambari']['version']}.erb"
+  variables(
+    'version_full' => ambari_server_version_full.call
+  )
   sensitive true
   owner node['hw']['ambari']['server']['user']['name']
   group 'root'
