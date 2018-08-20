@@ -75,9 +75,9 @@ if node['hw']['ambari']['server']['config']['ambari.properties']['api.ssl'] == '
     group 'root'
     mode 0600
   end
-  file 'create_/var/lib/ambari-server/keys/http.pass.txt' do
-    path '/var/lib/ambari-server/keys/http.pass.txt'
-    content node['hw']['ambari']['server']['crypto']['http_key_pass'].to_s
+  file 'create_/var/lib/ambari-server/keys/https.pass.txt' do
+    path '/var/lib/ambari-server/keys/https.pass.txt'
+    content node['hw']['ambari']['server']['crypto']['https_key_pass'].to_s
     owner node['hw']['ambari']['server']['user']['name']
     group 'root'
     mode '0600'
@@ -99,13 +99,6 @@ if node['hw']['ambari']['server']['config']['ambari.properties']['ambari.ldap.is
     owner node['hw']['ambari']['server']['user']['name']
     group 'root'
     mode 0600
-  end
-  file 'create_/var/lib/ambari-server/keys/http.pass.txt' do
-    path '/var/lib/ambari-server/keys/http.pass.txt'
-    content node['hw']['ambari']['server']['crypto']['http_key_pass'].to_s
-    owner node['hw']['ambari']['server']['user']['name']
-    group 'root'
-    mode '0600'
   end
   file 'create_/etc/ambari-server/conf/ldap-password.dat' do
     path '/etc/ambari-server/conf/ldap-password.dat'

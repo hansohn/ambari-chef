@@ -6,6 +6,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - no new features in development at this time
 
+## [0.4.1](https://github.com/hansohn/ambari-chef/compare/0.4.0...0.4.1) (Aug 20, 2018)
+
+BUG FIXES:
+
+- update ssl password file name from http.pass.txt to https.pass.txt
+- remove http.pass.txt file from ldap integration
+
 ## [0.4.0](https://github.com/hansohn/ambari-chef/compare/0.3.2...0.4.0) (Jul 24, 2018)
 
 FEATURES:
