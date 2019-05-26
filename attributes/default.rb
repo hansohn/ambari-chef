@@ -4,8 +4,8 @@ default['python']['python2']['packages'] = ['python']
 default['python']['python2']['pips'] = []
 
 # -- JAVA --
-default['java']['install_from'] = 'oracle_source'
-default['java']['install_version'] = 'jdk-8u181-linux-x64'
+default['java']['install_from'] = 'amazon_source'
+default['java']['install_version'] = 'jdk-8u212-linux-x64'
 
 # -- HW CLUSTER --
 default['hw']['cluster']['name'] = 'demo'
@@ -15,7 +15,7 @@ default['hw']['cluster']['hostmapping_file'] = 'demo_hostmapping.json'
 default['hw']['cluster']['version_definition_file'] = 'demo_vdf.json'
 
 # -- AMBARI REPO --
-default['hw']['ambari']['version'] = '2.7.0'
+default['hw']['ambari']['version'] = '2.7.3'
 # 2.4.0
 default['hw']['ambari']['2.4.0']['version_full'] = '2.4.0.1-1'
 default['hw']['ambari']['2.4.0']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.4.0.1/ambari.repo"
@@ -31,6 +31,9 @@ default['hw']['ambari']['2.6.2']['repo'] = "http://public-repo-1.hortonworks.com
 # 2.7.0
 default['hw']['ambari']['2.7.0']['version_full'] = '2.7.0.0-897'
 default['hw']['ambari']['2.7.0']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.7.0.0/ambari.repo"
+# 2.7.3
+default['hw']['ambari']['2.7.3']['version_full'] = '2.7.3.0-139'
+default['hw']['ambari']['2.7.3']['repo'] = "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.7.3.0/ambari.repo"
 
 # -- AMBARI CONFIG --
 default['hw']['ambari']['server']['setup']['db']['databasehost'] = 'localhost'
