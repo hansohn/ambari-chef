@@ -19,11 +19,11 @@ default['java']['install_version'] = 'jdk-8u212-linux-x64'
 
 ### Configuration
 
-By default this cookbook installs Ambari version ```2.7.0```, which at the time of this writing, is the current version. A different version of Ambari can be specified for installation by overriding the version attribute.
+By default this cookbook installs Ambari version ```2.7.3```, which at the time of this writing, is the current version. A different version of Ambari can be specified for installation by overriding the version attribute.
 
 ```ruby
 # ambari
-default['hw']['ambari']['version'] = '2.7.0'
+default['hw']['ambari']['version'] = '2.7.3'
 default['hw']['ambari']['server']['config']['ambari.properties']['api.ssl'] = 'false'
 default['hw']['ambari']['server']['config']['ambari.properties']['client.api.port'] = '8080'
 ```
