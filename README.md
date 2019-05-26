@@ -13,8 +13,8 @@ Ambari requires [Java](http://www.oracle.com/technetwork/java/javase/downloads/i
 default['python']['python2']['packages'] = ['python' ]
 
 # java 8
-default['java']['install_from'] = 'oracle_source'
-default['java']['install_version'] = 'jdk-8u181-linux-x64'
+default['java']['install_from'] = 'amazon_source'
+default['java']['install_version'] = 'jdk-8u212-linux-x64'
 ```
 
 ### Configuration

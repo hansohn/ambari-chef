@@ -3,4 +3,4 @@ source 'https://supermarket.chef.io'
 
 metadata
 
-cookbook 'java-chef', '~> 1.1.0', git: 'https://github.com/hansohn/java-chef.git'
+cookbook 'java-chef', '~> 2.1.0', git: 'https://github.com/hansohn/java-chef.git'

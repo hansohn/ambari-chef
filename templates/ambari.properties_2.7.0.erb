@@ -42,7 +42,7 @@ http.strict-transport-security=max-age=31536000
 http.x-content-type-options=nosniff
 http.x-frame-options=DENY
 http.x-xss-protection=1; mode=block
-java.home=<%= node['java']['oracle']['config']['app_dir'] %>/<%= node['java']['oracle']['config']['extract_dir'] %>
+java.home=<%= node['java']['setup']['app_dir'] %>/<%= node['java'][@java_install][@java_version]['extract_dir'] %>
 java.releases=jdk1.8
 java.releases.ppc64le=
 jce.download.supported=true

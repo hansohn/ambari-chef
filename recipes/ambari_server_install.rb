@@ -85,11 +85,14 @@ bash 'create_ambari_postgres_schema' do
   only_if { File.exist?('/tmp/postgres_create_ambari_schema.sql') }
 end
 
+java_version = -> { node['java']['install_version'] }
+java_install = -> { node['java']['install_from'] }
+
 # install & configure ambari-server
 # setup ambari-server
 bash 'config_ambari_server' do
   code "ambari-server setup -s \
-        --java-home=#{node['java']['oracle']['config']['app_dir']}/#{node['java']['oracle']['config']['extract_dir']} \
+        --java-home=#{node['java']['setup']['app_dir']}/#{node['java'][java_install.call][java_version.call]['extract_dir']} \
         --database=#{node['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.database']} \
         --databasehost=#{node['hw']['ambari']['server']['setup']['db']['databasehost']} \
         --databaseport=#{node['hw']['ambari']['server']['setup']['db']['databaseport']} \

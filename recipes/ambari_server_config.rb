@@ -24,6 +24,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+java_install = -> { node['java']['install_from'] }
+java_version = -> { node['java']['install_version'] }
+
 # set ambari-server file permissions
 bash 'set_ambari-server_file_permissions' do
   code <<-EOF
@@ -125,6 +128,10 @@ template 'create_/etc/ambari-server/conf/ambari.properties' do
   path '/etc/ambari-server/conf/ambari.properties'
   source "ambari.properties_#{node['hw']['ambari']['version']}.erb"
   sensitive true
+  variables(
+    'java_install' => java_install.call,
+    'java_version' => java_version.call
+  )
   owner node['hw']['ambari']['server']['user']['name']
   group 'root'
 end
