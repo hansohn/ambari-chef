@@ -10,11 +10,17 @@ Ambari requires [Java](http://www.oracle.com/technetwork/java/javase/downloads/i
 
 ```ruby
 # python 2
-default['python']['python2']['packages'] = ['python' ]
+override['python'] = {
+  'python2' => {
+    'packages' => ['python'],
+  },
+}
 
 # java 8
-default['java']['install_from'] = 'amazon_source'
-default['java']['install_version'] = 'jdk-8u212-linux-x64'
+override['java'] = {
+  'install_from' => 'amazon_source',
+  'install_version' => 'jdk-8u212-linux-x64',
+}
 ```
 
 ### Configuration
@@ -23,9 +29,19 @@ By default this cookbook installs Ambari version ```2.7.3```, which at the time 
 
 ```ruby
 # ambari
-default['hw']['ambari']['version'] = '2.7.3'
-default['hw']['ambari']['server']['config']['ambari.properties']['api.ssl'] = 'false'
-default['hw']['ambari']['server']['config']['ambari.properties']['client.api.port'] = '8080'
+override['hw'] = {
+  'ambari' => {
+    'version' => '2.7.3',
+    'server' => {
+      'config' => {
+        'ambari.properties' => {
+          'api.ssl' => 'false',
+          'client.api.port' => '8080',
+        },
+      },
+    },
+  },
+}
 ```
 
 ### LDAP Authentication
@@ -34,24 +50,44 @@ To enable LDAP Authentication, define the following keys in your attributes file
 
 ```ruby
 # ambari ldap integration
-default['hw']['ambari']['server']['config']['ambari.properties']['ambari.ldap.isConfigured'] = 'false'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.baseDn'] = 'dc=prd,dc=domain,dc=local'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.managerDn'] = 'uid=manager,cn=users,cn=accounts,dc=prd,dc=domain,dc=local'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.primaryUrl'] = 'ldap-server-01.prd.domain.local:636'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.bindAnonymously'] = 'false'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.dnAttribute'] = 'dn'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.groupMembershipAttr'] = 'memberUid'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.groupNamingAttr'] = 'cn'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.groupObjectClass'] = 'posixgroup'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.managerPassword'] = '/etc/ambari-server/conf/ldap-password.dat'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.referral'] = 'follow'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.usernameAttribute'] = 'uid'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.userObjectClass'] = 'person'
-default['hw']['ambari']['server']['config']['ambari.properties']['authentication.ldap.useSSL'] = 'true'
+override['hw'] = {
+  'ambari' => {
+    'server' => {
+      'config' => {
+        'ambari.properties' => {
+          'ambari.ldap.isConfigured' => 'false',
+          'authentication.ldap.baseDn' = 'dc=prd,dc=domain,dc=local',
+          'authentication.ldap.managerDn' => 'uid=manager,cn=users,cn=accounts,dc=prd,dc=domain,dc=local',
+          'authentication.ldap.primaryUrl' => 'ldap-server-01.prd.domain.local:636',
+          'authentication.ldap.bindAnonymously' => 'false',
+          'authentication.ldap.dnAttribute' => 'dn',
+          'authentication.ldap.groupMembershipAttr' => 'memberUid',
+          'authentication.ldap.groupNamingAttr' => 'cn',
+          'authentication.ldap.groupObjectClass' => 'posixgroup',
+          'authentication.ldap.managerPassword' => '/etc/ambari-server/conf/ldap-password.dat',
+          'authentication.ldap.referral' => 'follow',
+          'authentication.ldap.usernameAttribute' => 'uid',
+          'authentication.ldap.userObjectClass' => 'person',
+          'authentication.ldap.useSSL' => 'true',
+        },
+      },
+    },
+  },
+}
 
 # ambari ldap allowed users
-default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_groups'] = ['prd_user_group']
-default['hw']['ambari']['server']['setup']['ldap']['ldap_sync_users'] = ['prd_user']
+override['hw'] = {
+  'ambari' => {
+    'server' => {
+      'setup' => {
+        'ldap' => {
+          'ldap_sync_groups' => ['prd_user_group'],
+          'ldap_sync_users' => ['prd_user'],
+        },
+      },
+    },
+  },
+}
 ```
 
 ### PostgreSQL Database
@@ -60,25 +96,45 @@ Ambari installs and utilizes PostgreSQL by default. The `postgresql-server` pack
 
 ```ruby
 # ambari server db setup values
-default['hw']['ambari']['server']['setup']['db']['databasehost'] = 'localhost'
-default['hw']['ambari']['server']['setup']['db']['databaseport'] = '5432'
-default['hw']['ambari']['server']['setup']['db']['databasepassword'] = 'bigdata'
+override['hw'] = {
+  'ambari' => {
+    'server' => {
+      'setup' => {
+        'db' => {
+          'databasehost' => 'localhost',
+          'databaseport' => '5432',
+          'databasepassword' => 'bigdata',
+        },
+      },
+    },
+  },
+}
 
 # ambari server config values
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.connection-pool'] = 'internal'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.database_name'] = 'ambari'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.database'] = 'postgres'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.driver'] = 'org.postgresql.Driver'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.hostname'] = 'localhost'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.port'] = 5432
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.postgres.schema'] = 'ambari'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.driver'] = 'org.postgresql.Driver'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.url'] = 'jdbc:postgresql://localhost:5432/ambari'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.user.name'] = 'ambari'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.rca.user.passwd'] = '/etc/ambari-server/conf/password.dat'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.url'] = 'jdbc:postgresql://localhost:5432/ambari'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.user.name'] = 'ambari'
-default['hw']['ambari']['server']['config']['ambari.properties']['server.jdbc.user.passwd'] = '/etc/ambari-server/conf/password.dat'
+override['hw'] = {
+  'ambari' => {
+    'server' => {
+      'config' => {
+        'ambari.properties' => {
+          'server.jdbc.connection-pool' => 'internal',
+          'server.jdbc.database_name' => 'ambari',
+          'server.jdbc.database' => 'postgres',
+          'server.jdbc.driver' => 'org.postgresql.Driver',
+          'server.jdbc.hostname' => 'localhost',
+          'server.jdbc.port' => 5432,
+          'server.jdbc.postgres.schema' => 'ambari',
+          'server.jdbc.rca.driver' => 'org.postgresql.Driver',
+          'server.jdbc.rca.url' => 'jdbc:postgresql://localhost:5432/ambari',
+          'server.jdbc.rca.user.name' => 'ambari',
+          'server.jdbc.rca.user.passwd' => '/etc/ambari-server/conf/password.dat',
+          'server.jdbc.url' => 'jdbc:postgresql://localhost:5432/ambari',
+          'server.jdbc.user.name' => 'ambari',
+          'server.jdbc.user.passwd' => '/etc/ambari-server/conf/password.dat',
+        },
+      },
+    },
+  },
+}
 ```
 
 ### Usage

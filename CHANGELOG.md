@@ -6,6 +6,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - no new features in development at this time
 
+## [1.0.0](https://github.com/hansohn/ambari-chef/compare/0.5.0...1.0.0) (May 29, 2019)
+
+FEATURES:
+
+- update attrbiute structure
+
+BUG FIXES:
+
+- call ambari version attributes at runtime
+
 ## [0.5.0](https://github.com/hansohn/ambari-chef/compare/0.4.1...0.5.0) (May 26, 2019)
 
 FEATURES:
