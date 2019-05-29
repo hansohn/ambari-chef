@@ -26,6 +26,7 @@
 
 java_install = -> { node['java']['install_from'] }
 java_version = -> { node['java']['install_version'] }
+ambari_version = -> { node['hw']['ambari']['version'] }
 
 # set ambari-server file permissions
 bash 'set_ambari-server_file_permissions' do
@@ -126,7 +127,7 @@ end
 # update ambari with new config
 template 'create_/etc/ambari-server/conf/ambari.properties' do
   path '/etc/ambari-server/conf/ambari.properties'
-  source "ambari.properties_#{node['hw']['ambari']['version']}.erb"
+  source "ambari.properties_#{ambari_version.call}.erb"
   sensitive true
   variables(
     'java_install' => java_install.call,

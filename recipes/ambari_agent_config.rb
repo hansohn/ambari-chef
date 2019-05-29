@@ -24,6 +24,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+ambari_version = -> { node['hw']['ambari']['version'] }
+
 # set ambari-agent file permissions
 bash 'set_ambari-agent_file_permissions' do
   code <<-EOF
@@ -81,7 +83,7 @@ ambari_server = if Chef::Config[:local_mode]
 # update ambari with new config
 template 'create_/etc/ambari-agent/conf/ambari-agent.ini' do
   path '/etc/ambari-agent/conf/ambari-agent.ini'
-  source "ambari-agent.ini_#{node['hw']['ambari']['version']}.erb"
+  source "ambari-agent.ini_#{ambari_version.call}.erb"
   sensitive true
   owner node['hw']['ambari']['agent']['user']['name']
   group 'root'

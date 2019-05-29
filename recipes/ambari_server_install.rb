@@ -24,6 +24,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+java_version = -> { node['java']['install_version'] }
+java_install = -> { node['java']['install_from'] }
+ambari_version = -> { node['hw']['ambari']['version'] }
+ambari_version_full = -> { node['hw']['ambari'][ambari_version.call]['version_full'] }
+
 # include package(s)
 package ['openssl-devel']
 
@@ -85,9 +90,6 @@ bash 'create_ambari_postgres_schema' do
   only_if { File.exist?('/tmp/postgres_create_ambari_schema.sql') }
 end
 
-java_version = -> { node['java']['install_version'] }
-java_install = -> { node['java']['install_from'] }
-
 # install & configure ambari-server
 # setup ambari-server
 bash 'config_ambari_server' do
@@ -104,12 +106,10 @@ bash 'config_ambari_server' do
   action 'nothing'
 end
 
-ambari_server_version = -> { node['hw']['ambari'][node['hw']['ambari']['version']]['version_full'] }
-
 # install ambari-server
 package 'ambari-server' do
   package_name 'ambari-server'
-  version ambari_server_version.call
+  version ambari_version_full.call
   action :install
   notifies :create, 'template[create_/tmp/postgres_create_ambari_db.sql]', :immediately
   notifies :run, 'bash[create_ambari_postgres_db]', :immediately

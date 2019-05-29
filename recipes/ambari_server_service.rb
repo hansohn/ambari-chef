@@ -24,6 +24,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+ambari_version = -> { node['hw']['ambari']['version'] }
+ambari_version_full = -> { node['hw']['ambari'][ambari_version.call]['version_full'] }
+
 # stop ambari server if not running correctly
 bash 'fix_ambari-server_service' do
   code <<-EOF
@@ -41,14 +44,12 @@ bash 'systemctl_daemon_reload' do
   action :nothing
 end
 
-ambari_server_version_full = -> { node['hw']['ambari'][node['hw']['ambari']['version']]['version_full'] }
-
 # create ambari-server service
 template 'create_/etc/rc.d/init.d/ambari-server' do
   path '/etc/rc.d/init.d/ambari-server'
-  source "ambari-server.service_#{node['hw']['ambari']['version']}.erb"
+  source "ambari-server.service_#{ambari_version.call}.erb"
   variables(
-    'version_full' => ambari_server_version_full.call
+    'version_full' => ambari_version_full.call
   )
   sensitive true
   owner node['hw']['ambari']['server']['user']['name']

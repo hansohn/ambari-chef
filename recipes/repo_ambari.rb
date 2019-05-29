@@ -24,18 +24,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+ambari_version = -> { node['hw']['ambari']['version'] }
+ambari_repo = -> { node['hw']['ambari'][ambari_version.call]['repo'] }
+
 # reload internal Chef yum cache
 ruby_block 'yum_cache_reload' do
   block { Chef::Provider::Package::Yum::YumCache.instance.reload }
   action :nothing
 end
 
-ambari_repo = -> { node['hw']['ambari'][node['hw']['ambari']['version']]['repo'] }
-
 # add ambari yum repo
 remote_file 'ambari_yum_repo' do
   source ambari_repo.call
-  path "/etc/yum.repos.d/ambari_#{node['hw']['ambari']['version']}.repo"
+  path "/etc/yum.repos.d/ambari_#{ambari_version.call}.repo"
   owner 'root'
   group 'root'
   mode '0644'
