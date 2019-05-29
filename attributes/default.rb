@@ -68,7 +68,7 @@ default['hw'] = {
           'authentication.ldap.groupMembershipAttr' => 'memberUid',
           'authentication.ldap.groupNamingAttr' => 'cn',
           'authentication.ldap.groupObjectClass' => 'posixgroup',
-          'authentication.ldap.managerPassword' =>'/etc/ambari-server/conf/ldap-password.dat',
+          'authentication.ldap.managerPassword' => '/etc/ambari-server/conf/ldap-password.dat',
           'authentication.ldap.referral' => 'follow',
           'authentication.ldap.usernameAttribute' => 'uid',
           'authentication.ldap.userObjectClass' => 'person',
@@ -134,8 +134,8 @@ default['hw'] = {
         'truststore_jks' => "/etc/pki/tls/certs/#{node['fqdn']}.jks",
       },
       'user' => {
-         'name' => 'ambari-agent',
-         'home' => '/var/lib/ambari-agent',
+        'name' => 'ambari-agent',
+        'home' => '/var/lib/ambari-agent',
         'shell' => '/bin/bash',
         'uid' => '15011',
       },
@@ -249,68 +249,70 @@ default['hw'] = {
   },
 }
 
-case node.chef_environment
-when 'production'
-  normal['hw'] = {
-    'ambari' => {
-      'server' => {
-        'config' => {
-          'ambari.properties' => {
-            'host_cname' => 'ambari.prd.domain.local',
-            'authentication.ldap.baseDn' => 'dc=prd,dc=domain,dc=local',
-            'authentication.ldap.managerDn' => 'uid=manager,cn=users,cn=accounts,dc=prd,dc=domain,dc=local',
-            'authentication.ldap.primaryUrl' => 'ldap-server-01.prd.domain.local:636',
+if defined?(node.chef_environment)
+  case node.chef_environment
+  when 'production'
+    normal['hw'] = {
+      'ambari' => {
+        'server' => {
+          'config' => {
+            'ambari.properties' => {
+              'host_cname' => 'ambari.prd.domain.local',
+              'authentication.ldap.baseDn' => 'dc=prd,dc=domain,dc=local',
+              'authentication.ldap.managerDn' => 'uid=manager,cn=users,cn=accounts,dc=prd,dc=domain,dc=local',
+              'authentication.ldap.primaryUrl' => 'ldap-server-01.prd.domain.local:636',
+            },
           },
-        },
-        'setup' => {
-          'ldap' => {
-            'ldap_sync_groups' => ['prd_user_group'],
-            'ldap_sync_users' => ['prd_user'],
-          },
-        },
-      },
-    },
-  }
-when 'staging'
-  normal['hw'] = {
-    'ambari' => {
-      'server' => {
-        'config' => {
-          'ambari.properties' => {
-            'host_cname' => 'ambari.stg.domain.local',
-            'authentication.ldap.baseDn' => 'dc=stg,dc=domain,dc=local',
-            'authentication.ldap.managerDn' => 'uid=manager,cn=users,cn=accounts,dc=stg,dc=domain,dc=local',
-            'authentication.ldap.primaryUrl' => 'ldap-server-01.stg.domain.local:636',
-          },
-        },
-        'setup' => {
-          'ldap' => {
-            'ldap_sync_groups' => ['stg_user_group'],
-            'ldap_sync_users' => ['stg_user'],
+          'setup' => {
+            'ldap' => {
+              'ldap_sync_groups' => ['prd_user_group'],
+              'ldap_sync_users' => ['prd_user'],
+            },
           },
         },
       },
-    },
-  }
-else
-  normal['hw'] = {
-    'ambari' => {
-      'server' => {
-        'config' => {
-          'ambari.properties' => {
-            'host_cname' => 'ambari.dev.domain.local',
-            'authentication.ldap.baseDn' => 'dc=dev,dc=domain,dc=local',
-            'authentication.ldap.managerDn' => 'uid=manager,cn=users,cn=accounts,dc=dev,dc=domain,dc=local',
-            'authentication.ldap.primaryUrl' => 'ldap-server-01.dev.domain.local:636',
+    }
+  when 'staging'
+    normal['hw'] = {
+      'ambari' => {
+        'server' => {
+          'config' => {
+            'ambari.properties' => {
+              'host_cname' => 'ambari.stg.domain.local',
+              'authentication.ldap.baseDn' => 'dc=stg,dc=domain,dc=local',
+              'authentication.ldap.managerDn' => 'uid=manager,cn=users,cn=accounts,dc=stg,dc=domain,dc=local',
+              'authentication.ldap.primaryUrl' => 'ldap-server-01.stg.domain.local:636',
+            },
           },
-        },
-        'setup' => {
-          'ldap' => {
-            'ldap_sync_groups' => ['dev_user_group'],
-            'ldap_sync_users' => ['dev_user'],
+          'setup' => {
+            'ldap' => {
+              'ldap_sync_groups' => ['stg_user_group'],
+              'ldap_sync_users' => ['stg_user'],
+            },
           },
         },
       },
-    },
-  }
+    }
+  else
+    normal['hw'] = {
+      'ambari' => {
+        'server' => {
+          'config' => {
+            'ambari.properties' => {
+              'host_cname' => 'ambari.dev.domain.local',
+              'authentication.ldap.baseDn' => 'dc=dev,dc=domain,dc=local',
+              'authentication.ldap.managerDn' => 'uid=manager,cn=users,cn=accounts,dc=dev,dc=domain,dc=local',
+              'authentication.ldap.primaryUrl' => 'ldap-server-01.dev.domain.local:636',
+            },
+          },
+          'setup' => {
+            'ldap' => {
+              'ldap_sync_groups' => ['dev_user_group'],
+              'ldap_sync_users' => ['dev_user'],
+            },
+          },
+        },
+      },
+    }
+  end
 end
