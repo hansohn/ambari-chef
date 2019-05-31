@@ -1,5 +1,5 @@
 # -- PYTHON --
-normal['python'] = {
+default['python'] = {
   'python2' => {
     'install' => true,
     'packages' => ['python'],
@@ -8,7 +8,7 @@ normal['python'] = {
 }
 
 # -- JAVA --
-normal['java'] = {
+force_default['java'] = {
   'install_from' => 'amazon_source',
   'install_version' => 'jdk-8u212-linux-x64',
 }
@@ -252,7 +252,7 @@ default['hw'] = {
 if defined?(node.chef_environment)
   case node.chef_environment
   when 'production'
-    normal['hw'] = {
+    force_default['hw'] = {
       'ambari' => {
         'server' => {
           'config' => {
