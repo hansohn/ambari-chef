@@ -6,6 +6,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - no new features in development at this time
 
+## [1.1.0](https://github.com/hansohn/ambari-chef/compare/1.0.2...1.1.0) (Dec 17, 2019)
+
+FEATURES:
+
+- update default ambari version to 2.7.4
+- update default java version to jdk-8u232-linux-x64 
+
 ## [1.0.2](https://github.com/hansohn/ambari-chef/compare/1.0.0...1.0.2) (May 31, 2019)
 
 BUG FIXES:

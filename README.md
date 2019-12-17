@@ -19,19 +19,19 @@ override['python'] = {
 # java 8
 override['java'] = {
   'install_from' => 'amazon_source',
-  'install_version' => 'jdk-8u212-linux-x64',
+  'install_version' => 'jdk-8u232-linux-x64',
 }
 ```
 
 ### Configuration
 
-By default this cookbook installs Ambari version ```2.7.3```, which at the time of this writing, is the current version. A different version of Ambari can be specified for installation by overriding the version attribute.
+By default this cookbook installs Ambari version ```2.7.4```, which at the time of this writing, is the current version. A different version of Ambari can be specified for installation by overriding the version attribute.
 
 ```ruby
 # ambari
 override['hw'] = {
   'ambari' => {
-    'version' => '2.7.3',
+    'version' => '2.7.4',
     'server' => {
       'config' => {
         'ambari.properties' => {
@@ -167,5 +167,6 @@ The following resources may be helpful to better understand Ambari:
 
 - [Apache Ambari](https://ambari.apache.org/)
 - [Apache Ambari Blueprints](https://cwiki.apache.org/confluence/display/AMBARI/Blueprints)
+- [Ambari Support Matrix](https://supportmatrix.hortonworks.com/)
 - [Hortonworks Documentation](https://docs.hortonworks.com/index.html)
 - [Hortonworks Community](https://community.hortonworks.com/answers/index.html)
