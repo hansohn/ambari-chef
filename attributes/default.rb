@@ -8,9 +8,9 @@ default['python'] = {
 }
 
 # -- JAVA --
-override['java'] = {
+force_default['java'] = {
   'install_from' => 'amazon_source',
-  'install_version' => 'jdk-8u212-linux-x64',
+  'install_version' => 'jdk-8u232-linux-x64',
 }
 
 # -- AMBARI CLUSTER --
@@ -48,6 +48,10 @@ default['hw']['ambari'] = {
   '2.7.3' => {
     'version_full' => '2.7.3.0-139',
     'repo' => "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.7.3.0/ambari.repo",
+  },
+  '2.7.4' => {
+    'version_full' => '2.7.4.0-118',
+    'repo' => "http://public-repo-1.hortonworks.com/ambari/centos#{node['platform_version'].to_i}/2.x/updates/2.7.4.0/ambari.repo",
   },
   'server' => {
     'setup' => {
@@ -228,7 +232,7 @@ default['hw']['logsearch'] = {
     },
     'logsearch-admin-json' => {
       'logsearch_admin_username' => 'ambari_logsearch_admin',
-      'logsearch_admin_password' =>  'ambari_logsearch_password',
+      'logsearch_admin_password' => 'ambari_logsearch_password',
     },
     'logsearch-env' => {
       'logsearch_keystore_location' => '/etc/security/serverKeys/logsearch.keyStore.jks',
