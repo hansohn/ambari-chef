@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ambari-chef
+# Cookbook:: ambari-chef
 # Recipe:: ambari_server_service
 #
 # The MIT License (MIT)

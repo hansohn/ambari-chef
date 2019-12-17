@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ambari-chef
+# Cookbook:: ambari-chef
 # Recipe:: ambari_metrics_config
 #
 # The MIT License (MIT)
@@ -31,13 +31,13 @@ if node['hw']['ambari']['metrics']['config']['ams-grafana-ini']['protocol'] == '
     source "file:///etc/pki/tls/certs/#{node['fqdn']}.crt"
     owner node['hw']['ambari']['metrics']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
   remote_file "copy_#{node['hw']['ambari']['metrics']['crypto']['key']}" do
     path node['hw']['ambari']['metrics']['crypto']['key']
     source "file:///etc/pki/tls/private/#{node['fqdn']}.key"
     owner node['hw']['ambari']['metrics']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
 end

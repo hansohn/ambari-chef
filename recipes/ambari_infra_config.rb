@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ambari-chef
+# Cookbook:: ambari-chef
 # Recipe:: ambari_infra_config
 #
 # The MIT License (MIT)
@@ -31,13 +31,13 @@ if node['hw']['ambari']['infra']['config']['infra-solr-env']['infra_solr_ssl_ena
     source "file:///etc/pki/tls/certs/#{node['fqdn']}.jks"
     owner node['hw']['ambari']['infra']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
   remote_file "copy_#{node['hw']['ambari']['infra']['crypto']['truststore_jks']}" do
     path node['hw']['ambari']['infra']['crypto']['truststore_jks']
     source "file:///etc/pki/tls/private/#{node['fqdn']}.jks"
     owner node['hw']['ambari']['infra']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
 end

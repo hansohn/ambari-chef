@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ambari-chef
+# Cookbook:: ambari-chef
 # Recipe:: config_disable_ipv6.rb
 #
 # The MIT License (MIT)

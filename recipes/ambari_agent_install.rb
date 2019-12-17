@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ambari-chef
+# Cookbook:: ambari-chef
 # Recipe:: ambari_agent_install
 #
 # The MIT License (MIT)
@@ -28,7 +28,7 @@ ambari_version = -> { node['hw']['ambari']['version'] }
 ambari_version_full = -> { node['hw']['ambari'][ambari_version.call]['version_full'] }
 
 # include package(s)
-package ['openssl-devel', 'python']
+package %w(openssl-devel python)
 
 # install ambari-server
 package 'ambari-agent' do

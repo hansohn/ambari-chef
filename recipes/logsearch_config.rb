@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: hdp-chef
+# Cookbook:: hdp-chef
 # Recipe:: logsearch_config
 #
 # The MIT License (MIT)
@@ -31,13 +31,13 @@ if node['hw']['logsearch']['config']['logsearch-env']['logsearch_ui_protocol'] =
     source "file:///etc/pki/tls/certs/#{node['fqdn']}.jks"
     owner node['hw']['logsearch']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
   remote_file "copy_#{node['hw']['logsearch']['crypto']['truststore_jks']}" do
     path node['hw']['logsearch']['crypto']['truststore_jks']
     source "file:///etc/pki/tls/private/#{node['fqdn']}.jks"
     owner node['hw']['logsearch']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
 end

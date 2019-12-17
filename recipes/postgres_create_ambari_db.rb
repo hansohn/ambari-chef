@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ambari-chef
+# Cookbook:: ambari-chef
 # Recipe:: postgres_create_ambari_db
 #
 # The MIT License (MIT)

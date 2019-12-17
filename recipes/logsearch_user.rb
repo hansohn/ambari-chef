@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: hdp-chef
+# Cookbook:: hdp-chef
 # Recipe:: logsearch_user
 #
 # The MIT License (MIT)

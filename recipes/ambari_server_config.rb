@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ambari-chef
+# Cookbook:: ambari-chef
 # Recipe:: ambari_server_config
 #
 # The MIT License (MIT)
@@ -45,7 +45,7 @@ if node['hw']['ambari']['server']['setup']['security']['setup-truststore'] == 't
     source "file://#{node['hw']['ambari']['server']['crypto']['truststore_jks']}"
     owner node['hw']['ambari']['server']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
   file 'create_/var/lib/ambari-server/keys/pass.txt' do
     path '/var/lib/ambari-server/keys/pass.txt'
@@ -59,7 +59,7 @@ if node['hw']['ambari']['server']['setup']['security']['setup-truststore'] == 't
     source "file://#{node['hw']['ambari']['server']['crypto']['ca']}"
     owner node['hw']['ambari']['server']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
 end
 
@@ -70,14 +70,14 @@ if node['hw']['ambari']['server']['config']['ambari.properties']['api.ssl'] == '
     source "file://#{node['hw']['ambari']['server']['crypto']['https_cert']}"
     owner node['hw']['ambari']['server']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
   remote_file 'copy_/var/lib/ambari-server/keys/https.key' do
     path '/var/lib/ambari-server/keys/https.key'
     source "file://#{node['hw']['ambari']['server']['crypto']['https_key']}"
     owner node['hw']['ambari']['server']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
   file 'create_/var/lib/ambari-server/keys/https.pass.txt' do
     path '/var/lib/ambari-server/keys/https.pass.txt'
@@ -91,7 +91,7 @@ if node['hw']['ambari']['server']['config']['ambari.properties']['api.ssl'] == '
     source "file://#{node['hw']['ambari']['server']['crypto']['https_keystore_p12']}"
     owner node['hw']['ambari']['server']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
 end
 
@@ -102,7 +102,7 @@ if node['hw']['ambari']['server']['config']['ambari.properties']['ambari.ldap.is
     source "file://#{node['hw']['ambari']['server']['crypto']['https_keystore_jks']}"
     owner node['hw']['ambari']['server']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
   file 'create_/etc/ambari-server/conf/ldap-password.dat' do
     path '/etc/ambari-server/conf/ldap-password.dat'

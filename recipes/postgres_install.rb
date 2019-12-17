@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ambari-chef
+# Cookbook:: ambari-chef
 # Recipe:: postgres_install
 #
 # The MIT License (MIT)
@@ -43,7 +43,7 @@ end
 
 # install postgresql-server
 package 'install_postgres' do
-  package_name ['postgresql-server', 'postgresql-contrib', 'postgresql-devel', 'postgresql-plpython', 'postgresql-jdbc']
+  package_name %w(postgresql-server postgresql-contrib postgresql-devel postgresql-plpython postgresql-jdbc)
   action :install
   notifies :run, 'bash[initialize_postgres_db]', :immediately
   notifies :create, 'template[create_/var/lib/pgsql/data/pg_hba.conf]', :immediately

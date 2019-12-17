@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: ambari-chef
+# Cookbook:: ambari-chef
 # Recipe:: ambari_agent_config
 #
 # The MIT License (MIT)
@@ -43,14 +43,14 @@ if node['hw']['ambari']['agent']['setup']['security']['setup-truststore'] == 'tr
     source "file://#{node['hw']['ambari']['agent']['crypto']['truststore_jks']}"
     owner node['hw']['ambari']['agent']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
   remote_file 'copy_/var/lib/ambari-agent/keys/ca.crt' do
     path '/var/lib/ambari-agent/keys/ca.crt'
     source "file://#{node['hw']['ambari']['agent']['crypto']['ca']}"
     owner node['hw']['ambari']['agent']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
 end
 
@@ -61,14 +61,14 @@ if node['hw']['ambari']['server']['config']['ambari.properties']['security.serve
     source "file://#{node['hw']['ambari']['agent']['crypto']['cert']}"
     owner node['hw']['ambari']['agent']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
   remote_file 'copy_/var/lib/ambari-agent/keys/https.key' do
     path "/var/lib/ambari-agent/keys/#{node['fqdn']}.key"
     source "file://#{node['hw']['ambari']['agent']['crypto']['key']}"
     owner node['hw']['ambari']['agent']['user']['name']
     group 'root'
-    mode 0600
+    mode '0600'
   end
 end
 
