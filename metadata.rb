@@ -3,7 +3,7 @@ maintainer 'Ryan Hansohn'
 maintainer_email 'info@imnorobot.com'
 license 'MIT'
 description 'Installs/Configures ambari-chef'
-version '1.1.0'
+version '1.1.1'
 chef_version '>= 12.14'
 
 supports 'centos', '>= 7.0'

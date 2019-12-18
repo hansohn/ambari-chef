@@ -6,6 +6,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - no new features in development at this time
 
+## [1.1.01](https://github.com/hansohn/ambari-chef/compare/1.1.0...1.1.1) (Dec 18, 2019)
+
+BUG FIXES:
+
+- update ambari agent sudoers file
+
 ## [1.1.0](https://github.com/hansohn/ambari-chef/compare/1.0.2...1.1.0) (Dec 17, 2019)
 
 FEATURES:
