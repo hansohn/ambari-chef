@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - no new features in development at this time
 
-## [1.1.01](https://github.com/hansohn/ambari-chef/compare/1.1.0...1.1.1) (Dec 18, 2019)
+## [1.1.1](https://github.com/hansohn/ambari-chef/compare/1.1.0...1.1.1) (Dec 18, 2019)
 
 BUG FIXES:
 
